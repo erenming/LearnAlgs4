@@ -1,0 +1,21 @@
+package practice.cp1_1;
+
+public class EX13 {
+
+	public static void printTM(int[][] matrix) {
+		for (int i = 0; i < matrix[0].length; i++) {
+			for (int j = 0; j < matrix.length; j++) 
+			{
+				System.out.printf("%4d", matrix[j][i]);
+			}
+			System.out.println();
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[][] a = { { 100, 200, 300 }, { 400, 500, 600 } };
+		printTM(a);
+	}
+
+}
