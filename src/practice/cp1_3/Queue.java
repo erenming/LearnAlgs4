@@ -1,5 +1,7 @@
 package practice.cp1_3;
 
+import java.util.Iterator;
+
 import edu.princeton.cs.algs4.StdIn;
 import edu.princeton.cs.algs4.StdOut;
 
@@ -37,6 +39,29 @@ public class Queue<Item> {
 		if(isEmpty()) last = null;
 		N--;
 		return item;
+		
+	}
+	
+	public Iterator<Item> iterator(){
+		return new ListIterator();
+	}
+	
+	private class ListIterator implements Iterator<Item>{
+
+		private Node current = first;
+		@Override
+		public boolean hasNext() {
+			// TODO Auto-generated method stub
+			return current != null;
+		}
+
+		@Override
+		public Item next() {
+			// TODO Auto-generated method stub
+			Item item = current.item;
+			current = current.next;
+			return item;
+		}
 		
 	}
 		
