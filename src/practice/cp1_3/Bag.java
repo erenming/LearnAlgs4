@@ -4,6 +4,9 @@ import java.util.Iterator;
 
 import org.omg.CORBA.Current;
 
+import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdOut;
+
 public class Bag<Item> {
 	private Node first;
 	
@@ -43,8 +46,6 @@ public class Bag<Item> {
 	}
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
 	}
 
 }
