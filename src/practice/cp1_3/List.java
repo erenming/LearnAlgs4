@@ -1,13 +1,8 @@
 package practice.cp1_3;
 
-import java.awt.Frame;
-import java.util.Arrays;
+import java.lang.Iterable;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-
-import javax.management.RuntimeErrorException;
-import javax.swing.tree.AbstractLayoutCache.NodeDimensions;
-
 import edu.princeton.cs.algs4.StdOut;
 
 public class List<Item> implements Iterable<Item> {
@@ -352,6 +347,8 @@ public class List<Item> implements Iterable<Item> {
 		first.next = null;
 		return rest;
 	}
+	
+	
 	
 	public static void main(String[] args) {
 		Integer[] a = {1, 2, 2, 3, 4, 5};
