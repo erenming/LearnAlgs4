@@ -1,5 +1,9 @@
 package practice.cp3_2;
 
+import javax.swing.plaf.basic.BasicComboBoxUI.KeyHandler;
+
+import edu.princeton.cs.algs4.Queue;
+
 public class BST<Key extends Comparable<Key>, Value> {
 	private Node root;
 	
@@ -137,5 +141,65 @@ public class BST<Key extends Comparable<Key>, Value> {
 		if (cmp < 0) return rank(key, x.left);
 		else if (cmp > 0) return 1 + size(x.left) + rank(key, x.right);
 		else              return size(x.left);
+	}
+	
+	public void deleteMin() {
+		root = deleteMin(root);
+	}
+	
+	public Node deleteMin(Node x) {
+		if (x.left == null) return x.right;
+		x.left = deleteMin(x.left);
+		x.N = size(x.left) + size(x.right) + 1;
+		return x;
+	}
+	
+	public void deleteMax() {
+		root = deleteMax(root);
+	}
+	
+	public Node deleteMax(Node x) {
+		if (x.right == null) return x.left;
+		x.right = deleteMax(x.right);
+		x.N = size(x.left) + size(x.right) + 1;
+		return x;
+	}
+	
+	public void delete(Key key) {
+		root = delete(root, key);
+	}
+	
+	public Node delete(Node x, Key key) {
+		if (x == null) return null;
+		int cmp = key.compareTo(x.key);
+		if      (cmp < 0) x.left = delete(x.left, key);
+		else if (cmp > 0) x.right = delete(x.right, key);
+		else {
+			Node t = x;
+			x = min(x.right);
+			x.right = deleteMin(t.right);
+			x.left = t.left;
+		}
+		x.N = size(x.left) + size(x.right) + 1;
+		return x;
+	}
+	
+	public Iterable<Key> keys() {
+		return keys(min(), max());
+	}
+	
+	public Iterable<Key> keys(Key lo, Key hi) {
+		Queue<Key> queue = new Queue<Key>();
+		keys(root, queue, lo, hi);
+		return queue;
+	}
+	
+	private void keys(Node x, Queue<Key> queue, Key lo, Key hi) {
+		if (x == null) return;
+		int cmplo = lo.compareTo(x.key);
+		int cmphi = hi.compareTo(x.key);
+		if (cmplo < 0) keys(x.left, queue, lo, hi);
+		if (cmplo <= 0 && cmphi >= 0) queue.enqueue(x.key);
+		if (cmphi > 0) keys(x.right, queue, lo, hi);
 	}
 }
