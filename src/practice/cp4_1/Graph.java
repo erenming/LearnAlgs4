@@ -7,7 +7,7 @@ public class Graph
 {
 	private final int V;
 	private int E;
-	private Bag<Integer>[] adj;   // 邻接表
+	private Bag<Integer>[] adj;
 	
 	public Graph(int V) {
 		this.V = V; this.E = 0;
@@ -36,14 +36,13 @@ public class Graph
 		return E;
 	}
 	
-	// 向图中添加一条v-w边
+
 	public void addEdge(int v, int w) {
 		adj[v].add(w);
 		adj[w].add(v);
 		E++;
 	}
 	
-	// 与v相邻的所有顶点
 	public Iterable<Integer> adj(int v) {
 		return adj[v];
 	}
