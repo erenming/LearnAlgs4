@@ -4,6 +4,11 @@ import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
 
+/*
+* 单点和多点的可达性
+* 使用深度优先搜索
+* 运行时间：O(E + V)
+* */
 public class DirectedDFS {
 	private boolean[] marked;
 	
