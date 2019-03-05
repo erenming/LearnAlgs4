@@ -1,16 +1,16 @@
 1. 背包：不支持从中删除元素的集合类型
     - 无序
     - API:
-        ![xx](https://github.com/tomming233/unplearning/raw/master/notes/images/WX20190305-223458@2x.png)
+        ![xx](https://github.com/erenming/LearnAlgs4/raw/master/notes/images/WX20190305-223458@2x.png)
 2. 队列：基于先进先出(FIFO)策略的集合类型
     - 保存数据的同时保存它们的相对顺序：使它们入列顺序和出列书序相同
     - API:
-        ![xx](https://github.com/tomming233/unplearning/raw/master/notes/images/WX20190305-224038@2x.png)
+        ![xx](https://github.com/erenming/LearnAlgs4/raw/master/notes/images/WX20190305-224038@2x.png)
     - 应用场景：
         1. 排队
 3. 栈(下压栈)：基于后进先出(LIFO)策略的集合类型
     - API:
-        ![xx](https://github.com/tomming233/unplearning/raw/master/notes/images/WX20190305-224509@2x.png)
+        ![xx](https://github.com/erenming/LearnAlgs4/raw/master/notes/images/WX20190305-224509@2x.png)
 4. 链表：递归的数据结构，或者为空，或者指向一个节点(node)的引用，节点包括一个元素和一个指向另一个链表的引用
     - 节点：
     ```
@@ -21,7 +21,7 @@
     }
     ```
     - 结构：
-        ![xx](https://github.com/tomming233/unplearning/raw/master/notes/images/WX20190305-225602@2x.png)
+        ![xx](https://github.com/erenming/LearnAlgs4/raw/master/notes/images/WX20190305-225602@2x.png)
     - 表头的插入与删除:
         1. 插入：`Node oldfirst = first; first = new Node(); first.item = "xx"; first.next = oldfirst`
         2. 删除: `first = first.next;`
