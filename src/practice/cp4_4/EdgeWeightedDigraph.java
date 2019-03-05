@@ -1,6 +1,5 @@
 package practice.cp4_4;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
 import edu.princeton.cs.algs4.Bag;
 import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.StdOut;
