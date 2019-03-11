@@ -2,6 +2,21 @@
     - 原地排序：除了函数调用所需的栈和固定数目的实例变量之外无需其他额外内存
     - 其他排序：需要额外内存
 2. 选择排序：不断地选择剩余元素之中的最小者
+
+    ```java
+    public static void sort(Comparable[] a)
+    {   // Sort a[] into increasing order.
+        int N = a.length;               // array length
+        for (int i = 0; i < N; i++)
+        {  // Exchange a[i] with smallest entry in a[i+1...N).
+           int min = i;                 // index of minimal entr.
+           for (int j = i+1; j < N; j++)
+              if (less(a[j], a[min])) min = j;
+           exch(a, i, min);
+        }
+    }
+    ```
+
     - 步骤：
         1. 找到数组中的最小的那个元素
         2. 将它与数组中的第一个元素交换位置
@@ -12,6 +27,19 @@
         2. 数据移动是最少的：交换次数与数组大小线性关系
     - 时间复杂度: O(n^2)
 3. 插入排序：
+
+    ```java
+     public static void sort(Comparable[] a)
+     {  // Sort a[] into increasing order.
+        int N = a.length;
+        for (int i = 1; i < N; i++)
+        {  // Insert a[i] among a[i-1], a[i-2], a[i-3]... ..
+           for (int j = i; j > 0 && less(a[j], a[j-1]); j--)
+              exch(a, j, j-1);
+        }
+    }
+    ```
+
     - 步骤：
         1. 将数组的第`i`个元素与第`i-1`个元素组成的有序数组中个的元素从右到左逐个比较
         2. 插入到合适的位置(这里我们逐个交换位置，直到元素大于有序数组中的元素)
@@ -24,6 +52,25 @@
         2. 适合小规模数组
     - 时间复杂度: O(n^2)
 4. 希尔排序：针对插入排序优化，以`h`为间隔进行插入排序
+
+    ```java
+     public static void sort(Comparable[] a)
+     {  // Sort a[] into increasing order.
+        int N = a.length;
+        int h = 1;
+        while (h < N/3) h = 3*h + 1; // 1, 4, 13, 40, 121, 364, 1093, ...
+        while (h >= 1)
+        {  // h-sort the array.
+           for (int i = h; i < N; i++)
+           {  // Insert a[i] among a[i-h], a[i-2*h], a[i-3*h]... .
+              for (int j = i; j >= h && less(a[j], a[j-h]); j -= h)
+                 exch(a, j, j-h);
+            }
+        h = h/3;
+        }
+    }
+    ```
+
     - h有序数组：使数组中任意间隔为`h`的元素都有序，由h个互相独立的有序数组编织在一起组成的一个数组
     - 步骤：
         1. 构造从`N/k + 1`递减至`1`的递减序列。
