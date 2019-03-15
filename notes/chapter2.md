@@ -133,5 +133,49 @@
     - 时间复杂度：O(nlogn)
     - 空间复杂度: O(n)
 6. 快速排序：分治思想
+
+    ```java
+    private static void sort(Comparable[] a, int lo, int hi)
+    {
+        if (hi <= lo) return;
+        int j = partition(a, lo, hi);  // Partition (see page 291).
+        sort(a, lo, j-1);              // Sort left part a[lo .. j-1].
+        sort(a, j+1, hi);              // Sort right part a[j+1 .. hi].
+    }
+    ```
+
     - 将一个数组分成两个数组，然后将两部分独立地排序。当两个子数组都有序时整个数组就自然有序了
     - 切分(partition)： 将一个数组切分为两部分，位置取决于数组的内容
+        1. *随意*地取`a[lo]`作为切分元素
+        2. 从数组的左端开始向右扫描直到找到一个大于等于它的元素
+        3. 再从数组的右端开始向左扫描直到找到一个小于等于它的元素
+        4. 交换它们的位置
+        5. 如此往复，直到两个指针相遇，此时将切分元素`a[lo]`和左子数组最右侧的元素(`a[j]`)交换然后返回j即可
+    - 改进：
+        1. 当为小数组时，切换为插入排序
+        2. 三取样切分：取大小为3的子数组并用大小居中的元素作为切分元素
+        3. 熵最优的排序
+            - 对于大量重复元素的数组，快速排序的递归性会排序这些子数组，从而性能浪费
+            - 三向切分的快速排序：将数组分为三个子数组，分别为大于、等于、小于*切分元素*
+                1. 时间复杂度：O(1)
+
+                ```java
+                private static void sort(Comparable[] a, int lo, int hi)
+                {
+                    if (hi <= lo) return;
+                    int lt = lo, i = lo+1, gt = hi;
+                    Comparable v = a[lo];
+                    while (i <= gt)
+                    {
+                    int cmp = a[i].compareTo(v);
+                    if      (cmp < 0) exch(a, lt++, i++);
+                    else if (cmp > 0) exch(a, i, gt--);
+                    else              i++;              // 避免重复元素
+                    }  // Now a[lo..lt-1] < v = a[lt..gt] < a[gt+1..hi].
+                    sort(a, lo, lt - 1);
+                    sort(a, gt + 1, hi);
+                }
+                ```
+
+                ![xx](https://github.com/erenming/LearnAlgs4/raw/master/notes/images/WX20190314-215604@2x.png)
+    - 时间复杂度：O(nlogn)
