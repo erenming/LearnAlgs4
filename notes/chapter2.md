@@ -179,3 +179,8 @@
 
                 ![xx](https://github.com/erenming/LearnAlgs4/raw/master/notes/images/WX20190314-215604@2x.png)
     - 时间复杂度：O(nlogn)
+7. 排序的应用
+    - 问题的规约:
+        1. 找出重复的元素
+        2. 排名问题
+        3. 中位数：利用快排的切分，可实现O(n)时间复杂度
