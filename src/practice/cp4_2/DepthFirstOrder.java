@@ -11,8 +11,8 @@ public class DepthFirstOrder {
     private Stack<Integer> reversePost;    // 逆后序排列
 
     public DepthFirstOrder(Digraph G) {
-        pre      = new Queue<>();
-        post     = new Queue<>();
+        pre = new Queue<>();
+        post = new Queue<>();
         reversePost = new Stack<>();
         marked = new boolean[G.V()];
 
@@ -20,8 +20,7 @@ public class DepthFirstOrder {
             if (!marked[v]) dfs(G, v);
     }
 
-    private void dfs(Digraph G, int v)
-    {
+    private void dfs(Digraph G, int v) {
         pre.enqueue(v);
 
         marked[v] = true;
@@ -33,18 +32,15 @@ public class DepthFirstOrder {
         reversePost.push(v);
     }
 
-    public Iterable<Integer> pre()
-    {
+    public Iterable<Integer> pre() {
         return pre;
     }
 
-    public Iterable<Integer> post()
-    {
+    public Iterable<Integer> post() {
         return post;
     }
 
-    public Iterable<Integer> reversePost()
-    {
+    public Iterable<Integer> reversePost() {
         return reversePost;
     }
 }

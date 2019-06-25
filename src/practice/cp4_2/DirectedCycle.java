@@ -1,7 +1,9 @@
 package practice.cp4_2;
 
 import edu.princeton.cs.algs4.Digraph;
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Stack;
+import edu.princeton.cs.algs4.StdOut;
 
 public class DirectedCycle {
     private boolean[] marked;
@@ -42,5 +44,20 @@ public class DirectedCycle {
 
     public Iterable<Integer> cycle() {
         return cycle;
+    }
+
+    public static void main(String[] args) {
+        In in = new In(args[0]);
+        Digraph G = new Digraph(in);
+        DirectedCycle finder = new DirectedCycle(G);
+        if (finder.hasCycle()) {
+            StdOut.print("Cycle: ");
+            for (int v: finder.cycle()) {
+                StdOut.print(v+" ");
+            }
+            StdOut.println();
+        } else {
+            StdOut.println("No cycle");
+        }
     }
 }
