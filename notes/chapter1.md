@@ -12,14 +12,20 @@
     - API:
         ![xx](https://github.com/erenming/LearnAlgs4/raw/master/notes/images/WX20190305-223458@2x.png)
 2. 队列：基于先进先出(FIFO)策略的集合类型
-    - 保存数据的同时保存它们的相对顺序：使它们入列顺序和出列书序相同
+    - 保存数据的同时保存它们的相对顺序：使它们入列顺序和出列顺序相同
     - API:
         ![xx](https://github.com/erenming/LearnAlgs4/raw/master/notes/images/WX20190305-224038@2x.png)
-    - 应用场景：
-        1. 排队
+    - 其他队列：
+        1. 循环队列(可避免push时产生的搬移开销)
+        2. 阻塞队列
+        3. 并发队列
+    - 应用场景：线程池，生产者消费者模型，消息队列
 3. 栈(下压栈)：基于后进先出(LIFO)策略的集合类型
     - API:
         ![xx](https://github.com/erenming/LearnAlgs4/raw/master/notes/images/WX20190305-224509@2x.png)
+    - 顺序栈：数组实现
+    - 链式栈：链表实现
+    - 应用：表达式求值，括号匹配，函数调用栈，浏览器前进后退
 4. 链表：递归的数据结构，或者为空，或者指向一个节点(node)的引用，节点包括一个元素和一个指向另一个链表的引用
     - 节点：
     ```
